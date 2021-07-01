@@ -1,13 +1,44 @@
+//const { route } = require(".");
 const router = require("express").Router();
+const db = require("../../models");
 
-// CRATE new user thru signup
-router.post("/signup", async (req, res) => {
-  console.log("POST /api/user/signup");
+router.get("/workouts", async (req, res) => {
+  console.log("GET /api/workouts");
+  try {
+    const data = await db.Workout.find({});
+    //console.log(data);
+    res.json(data);
+  } catch (err) {
+    console.log(err);
+  }
+
+});
+
+router.put("/workouts", async (req, res) => {
+  console.log("PUT /api/workouts");
   try {
 
   } catch (err) {
-    console.log(err.errors[0]);
-    res.status(500).json({ messge: err.errors[0]["message"]});
+    console.log(err);
+  }
+
+});
+
+router.post("/workouts", async (req, res) => {
+  console.log("POST /api/workouts");
+  try {
+
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/workouts/range", async (req, res) => {
+  console.log("GET /api/workouts/range");
+  try {
+
+  } catch (err) {
+    console.log(err);
   }
 });
 

@@ -17,7 +17,7 @@ app.use(express.static("public"));
 app.use(routes);
 
 //logging a message to the user upon success
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Workout", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false
 }).then(() => {
