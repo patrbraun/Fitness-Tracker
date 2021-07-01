@@ -4,6 +4,8 @@ const express = require("express");
 const routes = require("./controllers");
 const mongoose = require("mongoose");
 
+
+
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 3000;
 // Creating express app and configuring middleware needed for authentication
