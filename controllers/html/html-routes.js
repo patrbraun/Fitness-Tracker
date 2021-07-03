@@ -1,10 +1,11 @@
 const router = require('express').Router();
+const path = require('path');
 
 // GET homepage
 router.get("/", async (req, res) => {
   console.log("GET /");
   try {
-    res.redirect("/index.html");
+    res.sendFile(path.join(__dirname, '../../public/index.html'));
   } catch (err) {
     console.error(err);
     res.status(401).json(err);
@@ -15,7 +16,7 @@ router.get("/", async (req, res) => {
 router.get("/exercise", async (req, res) => {
   console.log("GET /exercise");
   try {
-    res.redirect("/exercise.html");
+    res.sendFile(path.join(__dirname, '../../public/exercise.html'));
   } catch (err) {
     console.error(err);
     res.status(401).json(err);
@@ -26,7 +27,7 @@ router.get("/exercise", async (req, res) => {
 router.get("/stats", async (req, res) => {
   console.log("GET /stats");
   try {
-    res.redirect("/stats.html");
+    res.sendFile(path.join(__dirname, '../../public/stats.html'));
   } catch (err) {
     console.error(err);
     res.status(401).json(err);

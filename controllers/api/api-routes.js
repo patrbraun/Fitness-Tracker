@@ -5,6 +5,7 @@ const db = require("../../models");
 router.get("/workouts", async (req, res) => {
   console.log("GET /api/workouts");
   try {
+    //TODO duration
     const data = await db.Workout.find({});
     res.json(data);
   } catch (err) {
@@ -19,8 +20,9 @@ router.post("/workouts", async (req, res) => {
       day: new Date(new Date().setDate(new Date().getDate() - 1)),
       exercises: []
     }
-    const data = await db.Workout.collection.insertOne(newWorkout);
-    console.log(data.result.n + ' records created!');
+    const data = await db.Workout.create(newWorkout);
+    console.log(data + ' records created!');
+    res.json(data);
 
   } catch (err) {
     console.log(err);
@@ -29,13 +31,16 @@ router.post("/workouts", async (req, res) => {
 
 router.put("/workouts/:id", async (req, res) => {
   console.log("PUT /api/workouts");
+  console.log(req.params.id);
   try {
     console.log(req.body);
-    const data = await db.Workout.collection.updateOne(
+    //TODO
+    const data = await db.Workout.updateOne(
       {_id: req.params.id},
-      {$addToSet:{exercises:req.body}}
+      {$push:{exercises:req.body}}
     );
-    console.log(data.result.n + ' records updated!');
+    console.log(data + ' records updated!');
+    res.json(data);
   } catch (err) {
     console.log(err);
   }
@@ -45,7 +50,9 @@ router.put("/workouts/:id", async (req, res) => {
 router.get("/workouts/range", async (req, res) => {
   console.log("GET /api/workouts/range");
   try {
-
+    //TODO
+    const data = await db.Workout.find({});
+    res.json(data);
   } catch (err) {
     console.log(err);
   }
